@@ -1,0 +1,285 @@
+ * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+    }
+        
+        body {
+            min-height: 100vh;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(90deg, 
+                rgb(34, 44, 41) 0%, 
+                rgba(35, 45, 40, 1) 10%, 
+                rgba(20, 25, 22, 1) 16%, 
+                rgba(0, 0, 0, 1) 38%, 
+                rgba(0, 0, 0, 1) 70%, 
+                rgb(32, 32, 32) 100%);
+            color: #ffffff;
+            overflow-x: hidden;
+            position: relative;
+            transition: all 0.8s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+        
+        /* Animated background particles */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.1) 0%, transparent 0%),
+                        radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.05) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 1;
+            transition: all 0.8s ease;
+        }
+        
+        /* Happy state */
+        body.happy {
+            background: linear-gradient(135deg, #ffd700 0%, #ff6b35 50%, #f7931e 100%);
+            color: #000;
+        }
+        
+        body.happy::before {
+            background: radial-gradient(circle at 20% 80%, rgba(255, 255, 255, 0.4) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 20%, rgba(255, 215, 0, 0.3) 0%, transparent 50%);
+        }
+        
+        /* Sad state */
+        body.sad {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #0f0f23 100%);
+            color: #b0c4de;
+        }
+        
+        body.sad::before {
+            background: radial-gradient(circle at 20% 80%, rgba(30, 60, 114, 0.4) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 20%, rgba(0, 0, 0, 0.6) 0%, transparent 50%);
+        }
+        
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 20px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .background-graphic {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 700px;
+            height: 800px;
+            border-radius: 25%;
+            opacity: 1;
+            filter: blur(1px);
+            box-shadow: 0 0 500px rgb(0, 0, 0);
+            animation: pulse 4s ease-in-out infinite alternate;
+            z-index: 0;
+            transition: all 0.8s ease;
+            overflow: hidden;
+        }
+        
+        .background-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            /* border-radius: 15%; */
+        }
+        
+        body.happy .background-graphic {
+            opacity: 0.3;
+            filter: brightness(1.5) saturate(1.2);
+        }
+        
+        body.sad .background-graphic {
+            opacity: 0.2;
+            filter: brightness(0.5) saturate(0.8);
+        }
+        
+        @keyframes pulse {
+            0% { transform: translate(-50%, -50%) scale(1); }
+            100% { transform: translate(-50%, -50%) scale(1.1); }
+        }
+        
+        .question-input {
+            font-size: clamp(2rem, 5vw, 4rem);
+            font-weight: 900;
+            text-align: center;
+            margin-bottom: 60px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            background: linear-gradient(45deg, #fff, #ccc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            position: relative;
+            z-index: 3;
+            border: none;
+            background-color: transparent;
+            outline: none;
+            width: 100%;
+            max-width: 800px;
+            padding: 20px;
+            text-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
+            transition: all 0.6s ease;
+        }
+        
+        .question-input::placeholder {
+            background: linear-gradient(45deg, #fff, #ccc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            opacity: 0.7;
+        }
+        
+        body.happy .question-input,
+        body.happy .question-input::placeholder {
+            background: linear-gradient(45deg, #000, #333);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+        }
+        
+        body.sad .question-input,
+        body.sad .question-input::placeholder {
+            background: linear-gradient(45deg, #b0c4de, #87ceeb);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 20px rgba(176, 196, 222, 0.5);
+        }
+        
+        .buttons-container {
+            display: flex;
+            gap: 40px;
+            margin-top: 40px;
+            position: relative;
+            z-index: 3;
+        }
+        
+        .mood-button {
+            padding: 25px 50px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            text-decoration: none;
+            border: 3px solid transparent;
+            border-radius: 15px;
+            background: linear-gradient(45deg, #1a1a1a, #2d2d2d);
+            color: #fff;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+        }
+        
+        .mood-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+        
+        .mood-button:hover::before {
+            left: 100%;
+        }
+        
+        .happy-button {
+            background: linear-gradient(45deg, #ffd700, #ff6b35);
+            color: #000;
+            border-color: #ffd700;
+        }
+        
+        .happy-button:hover {
+            transform: translateY(-10px) scale(1.05);
+            box-shadow: 0 20px 40px rgba(255, 215, 0, 0.4);
+        }
+        
+        .sad-button {
+            background: linear-gradient(45deg, #1e3c72, #2a5298);
+            color: #b0c4de;
+            border-color: #2a5298;
+        }
+        
+        .sad-button:hover {
+            transform: translateY(-10px) scale(1.05);
+            box-shadow: 0 20px 40px rgba(30, 60, 114, 0.4);
+        }
+        
+        .glow-effect {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .mood-button:hover .glow-effect {
+            opacity: 1;
+        }
+        
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .buttons-container {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .mood-button {
+                padding: 20px 40px;
+                font-size: 1.2rem;
+            }
+            
+            .background-graphic {
+                width: 400px;
+                height: 400px;
+            }
+        }
+        
+        /* Luxury touches */
+        .luxury-border {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, #ffd700, transparent, #ffd700);
+            padding: 2px;
+            border-radius: 17px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .mood-button:hover .luxury-border {
+            opacity: 1;
+        }
+        
+        .luxury-border::after {
+            content: '';
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            right: 2px;
+            bottom: 2px;
+            background: inherit;
+            border-radius: 15px;
+        }

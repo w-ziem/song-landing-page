@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mood Selector</title>
+    <link rel="icon" href="zwk-logo.jpg" type="image/x-icon">
+    <meta name="description" content="Select your mood with a stylish and interactive interface. Choose between happy and sad moods with animated backgrounds and glowing effects.">
+    <meta name="keywords" content="mood selector, interactive design, happy mood, sad mood, animated background, glowing effects, stylish interface, web design, modern UI">
+    <meta name="author" content="w-ziem">
+    <meta name="theme-color" content="#0a0a0a">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="background-graphic">
+        <img src="zwk-logo.jpg" alt="ZWK Logo" class="background-image">
+    </div>
+    
+    <div class="container">
+        <h1 class="question-input" id="questionInput">
+            JAK SIĘ DZIŚ CZUJESZ?
+        </h1>
+        
+        <div class="buttons-container">
+            <a href="#" class="mood-button happy-button" id="happyBtn">
+                <div class="luxury-border"></div>
+                <div class="glow-effect"></div>
+                WESOŁO
+            </a>
+            
+            <a href="#" class="mood-button sad-button" id="sadBtn">
+                <div class="luxury-border"></div>
+                <div class="glow-effect"></div>
+                SMUTNO
+            </a>
+        </div>
+    </div>
+    
+    <script>
+        const body = document.body;
+        const happyBtn = document.getElementById('happyBtn');
+        const sadBtn = document.getElementById('sadBtn');
+        
+        // Hover effects
+        happyBtn.addEventListener('mouseenter', () => {
+            body.classList.add('happy');
+            body.classList.remove('sad');
+        });
+        
+        sadBtn.addEventListener('mouseenter', () => {
+            body.classList.add('sad');
+            body.classList.remove('happy');
+        });
+        
+        // Remove effects when not hovering over buttons
+        happyBtn.addEventListener('mouseleave', () => {
+            setTimeout(() => {
+                if (!happyBtn.matches(':hover') && !sadBtn.matches(':hover')) {
+                    body.classList.remove('happy', 'sad');
+                }
+            }, 100);
+        });
+        
+        sadBtn.addEventListener('mouseleave', () => {
+            setTimeout(() => {
+                if (!happyBtn.matches(':hover') && !sadBtn.matches(':hover')) {
+                    body.classList.remove('happy', 'sad');
+                }
+            }, 100);
+        });
+        
+        // Placeholder links - replace with actual Spotify URLs
+        happyBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            // Replace with actual Spotify URL for happy version
+            window.open('https://open.spotify.com/track/HAPPY_VERSION_ID', '_blank');
+        });
+        
+        sadBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            // Replace with actual Spotify URL for sad version
+            window.open('https://open.spotify.com/track/SAD_VERSION_ID', '_blank');
+        });
+    </script>
+</body>
+</html>
