@@ -13,30 +13,51 @@
 </head>
 <body>
     <div class="background-graphic">
-        <img src="zwk-logo.jpg" alt="ZWK Logo" class="background-image">
+        <img src="bg.png" alt="ZWK Logo" class="background-image">
     </div>
     
     <div class="container">
-        <h1 class="question-input" id="questionInput">
-            JAK SIĘ DZIŚ CZUJESZ?
-        </h1>
-        
+        <h1 class="question-input" id="questionInput">Czy byś zrobił to dla mnie?</h1>
+
         <div class="buttons-container">
             <a href="#" class="mood-button happy-button" id="happyBtn">
                 <div class="luxury-border"></div>
                 <div class="glow-effect"></div>
-                WESOŁO
+                TAK
             </a>
             
             <a href="#" class="mood-button sad-button" id="sadBtn">
                 <div class="luxury-border"></div>
                 <div class="glow-effect"></div>
-                SMUTNO
+                NIE
             </a>
         </div>
     </div>
     
     <script>
+        const question = document.getElementById('questionInput');
+        let index = 0;
+        const text = "Czy byś zrobił to dla mnie?";
+        const typeSpeed = 150; // Typing speed in milliseconds
+        function typeWriter() {
+            if (index < text.length) {
+            question.textContent += text.charAt(index);
+            index++;
+            setTimeout(typeWriter, typeSpeed);
+            } else {
+            setTimeout(() => {
+                question.textContent = '';
+                index = 0;
+                typeWriter();
+            }, 1500); // Wait 1 second before restarting
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            typeWriter();
+        });
+
+
         const body = document.body;
         const happyBtn = document.getElementById('happyBtn');
         const sadBtn = document.getElementById('sadBtn');
