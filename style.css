@@ -169,7 +169,7 @@
         .buttons-container {
             display: flex;
             gap: 40px;
-            margin-top: 40px;
+            margin-top: 250px;
             position: relative;
             z-index: 3;
         }
@@ -260,12 +260,14 @@
         /* Responsive design */
         @media (max-width: 768px) {
             .buttons-container {
-                flex-direction: column;
+                flex-direction: row;
                 gap: 20px;
             }
             
+
+
             .mood-button {
-                padding: 20px 40px;
+                padding: 15px 35px;
                 font-size: 1.2rem;
             }
             

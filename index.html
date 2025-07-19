@@ -17,7 +17,7 @@
     </div>
     
     <div class="container">
-        <h1 class="question-input" id="questionInput">Czy byś zrobił to dla mnie?</h1>
+        <h1 class="question-input" id="questionInput"></h1>
 
         <div class="buttons-container">
             <a href="#" class="mood-button happy-button" id="happyBtn">
@@ -38,7 +38,7 @@
         const question = document.getElementById('questionInput');
         let index = 0;
         const text = "Czy byś zrobił to dla mnie?";
-        const typeSpeed = 150; // Typing speed in milliseconds
+        const typeSpeed = 100; // Typing speed in milliseconds
         function typeWriter() {
             if (index < text.length) {
             question.textContent += text.charAt(index);
