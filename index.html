@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ZWK | STARE GARAŻE</title>
     <link rel="icon" href="zwk-logo.jpg" type="image/x-icon">
-    <meta name="description" content="Select your mood with a stylish and interactive interface. Choose between happy and sad moods with animated backgrounds and glowing effects.">
-    <meta name="keywords" content="mood selector, interactive design, happy mood, sad mood, animated background, glowing effects, stylish interface, web design, modern UI">
+    <meta name="description" content="Stare garaże to interaktywny projekt, który pozwala użytkownikom wybrać nastrój poprzez kliknięcie przycisków. Jest to promocja utworu 'Stare garaże' od ZWK, z animowanym tłem i efektami świetlnymi.">
+    <meta name="keywords" content="zwk, stare garaże, interaktywny projekt, muzyka, utwór, animacja, efekty świetlne, mood, muzyka, interaktywność, przyciski, kliknij, wybierz nastrój, altrap, hip-hop, polski rap, rap, hip-hop polski, muzyka polska, muzyka hip-hop, muzyka rap, ZWK">
     <meta name="author" content="w-ziem">
     <meta name="theme-color" content="#0a0a0a">
     <link rel="stylesheet" href="style.css">
@@ -89,6 +89,12 @@
                 }
             }, 100);
         });
+
+        // Remove mood class when returning to page
+        window.addEventListener('focus', () => {
+            document.body.classList.remove('happy', 'sad');
+        });
+
         
         // Placeholder links - replace with actual Spotify URLs
         happyBtn.addEventListener('click', (e) => {
